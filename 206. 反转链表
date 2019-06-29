@@ -21,3 +21,32 @@ class Solution(object):
         #末尾为NULL
         head.next = None
         return new_head
+
+#解法2
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        #使用栈来实现，先进后出
+        #注意这里stack中初始元素为None，否则会报错空
+        stack = [None]
+        p = head
+        while p:
+            stack.append(p)
+            p = p.next
+                     
+        head = stack.pop()
+        p = head
+        #这里也以none来判断结束
+        while p:
+            p.next = stack.pop()
+            p = p.next
+        return head
