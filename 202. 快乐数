@@ -1,0 +1,24 @@
+class Solution(object):
+    exist = []
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        #注意 判断退出的条件 ： 将每次得到的数放入列表，如果已存在 说明该数进入死循环，是不快乐数
+        #如果陷入死循环会报错，因此这里用 Python 的集合对中间数做了存储，如果发现计算出来的数之前曾经出现过，就说明已经进入了不快乐循环，此时返回 False
+        already_exist = set()
+        while n != 1:
+            num = 0
+            while n > 0:
+                num += (n%10)**2
+                n = n/10
+            
+        
+            if num in already_exist:
+                return False
+            else:
+                already_exist.add(num)
+            
+            n = num
+        return True
