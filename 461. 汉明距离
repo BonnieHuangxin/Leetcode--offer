@@ -1,0 +1,11 @@
+class Solution(object):
+    def hammingDistance(self, x, y):
+        """
+        :type x: int
+        :type y: int
+        :rtype: int
+        """
+        #str.count(sub, start= 0,end=len(string)) 统计字符串里某个字符出现的次数
+        #先异或（相异为1），再统计1的个数（即不相同的个数）
+        res = bin(x^y).count('1')
+        return res
