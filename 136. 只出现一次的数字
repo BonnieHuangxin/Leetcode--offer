@@ -1,0 +1,14 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        '''
+        异或： 1. 相同为0
+              2. 0与任何数异或都等于那个数 0^a = a
+        '''
+        a = 0
+        for num in nums:
+            a = a ^ num
+        return a
