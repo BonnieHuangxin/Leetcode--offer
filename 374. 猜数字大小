@@ -1,0 +1,23 @@
+# The guess API is already defined for you.
+# @param num, your guess
+# @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
+# def guess(num):
+
+class Solution(object):
+    def guessNumber(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        #二分法
+        l, r = 0, n
+        mid = (l+r)//2
+        while l < r:
+            if guess(mid) == 0:
+                return mid
+            elif guess(mid) == -1:
+                r = mid    #注意：左开右闭
+            elif guess(mid) == 1:
+                l = mid + 1
+            mid = (l + r)//2
+        return mid #这里注意，在0`n中一定存在mid，这里区别于普通的二分法查找
