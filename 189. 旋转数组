@@ -1,0 +1,20 @@
+class Solution:
+    def rotate(self, nums, k):
+        
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        """
+        反转法
+        1.将列表反转
+        2.将前k个元素反转  前半部分
+        3.将后n-k个元素反转  后半部分
+        """
+        #这是让你直接改，不是返回新数组!!!!!!，给nums[::]赋值
+        #考虑k>数组长度的情况，比如[1,2],3!!!!!!!!!
+        length = len(nums)
+        k = k%length #保证k<l
+        nums[:] = nums[::-1]
+        nums[:] = nums[:k][::-1] + nums[k:][::-1]
