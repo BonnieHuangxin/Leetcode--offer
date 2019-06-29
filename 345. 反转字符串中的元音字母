@@ -1,0 +1,22 @@
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        #元音字母为 'A、E、I、O、U', 注意题目里没有提示是否包含大小写字母
+        #两个指针，一个从前往后扫，一个从后往前扫。
+        vowel = {'A', 'E','I','O','U','a', 'e','i','o','u'}
+        i, j = 0, len(s) - 1
+        s = list(s)
+        while i < j:
+            if s[i] in vowel and s[j] in vowel:
+                s[i], s[j] = s[j], s[i]
+                i = i + 1
+                j = j - 1
+            if s[i] not in vowel:
+                i = i + 1
+            if s[j] not in vowel:
+                j = j - 1
+        res = ''.join(s)
+        return res
