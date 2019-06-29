@@ -1,0 +1,26 @@
+题目描述
+用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
+
+# -*- coding:utf-8 -*-
+class Solution:
+    #定义一个栈作为压入栈，在压入数据时，只往这个栈压入；
+    #另一个栈只为弹出栈，只从这个栈弹出数据
+    def __init__(self):
+        self.stackpush = []
+        self.stackpop = []
+    def push(self, node):
+        self.stackpush.append(node)
+    def pop(self):
+        #要实现队列的先进先出，也就是1.先把数据压入压入栈，2.再把压入栈中的数据倒入弹出栈，3.由弹出栈再弹出数据
+        #先保证弹出栈中数据都已经弹出
+        if self.stackpop:
+            return self.stackpop.pop()
+        
+        #如果弹出栈为空，则进行上述过程
+        if self.stackpush == None:
+            return None
+        else:
+            #当压入栈中的所有数据都倒入弹出栈
+            while self.stackpush:
+                self.stackpop.append(self.stackpush.pop())
+            return self.stackpop.pop()
