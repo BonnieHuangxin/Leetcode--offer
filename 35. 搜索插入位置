@@ -1,0 +1,13 @@
+class Solution(object):
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        #nums是排序数组，只需要从左到右比较大小即可
+        for i in range(len(nums)):
+            if nums[i] >= target:
+                return i
+            #否则插入列表最后面
+        return len(nums)
