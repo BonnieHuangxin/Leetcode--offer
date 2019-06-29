@@ -1,0 +1,22 @@
+class Solution(object):
+    def isPowerOfTwo(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        #bin() 返回一个整数 int 或者长整数 long int 的二进制表示。 用法： bin(n)
+        #list(map()) 接收一个函数 f 和一个 list，并通过把函数 f 依次作用在 list 的每个元素上，得到一个新的 list 并返回 用法：list(map(f,list))  返回一个通过f函数变换的list
+        #sum()的参数是一个list 用法：sum([1,2,3])
+        
+        #本题解法：1的二进制表示为0b1，2的二进制表示为0b10，4的二进制表示为0b100，16的二进制表示为0b1000。 当二进制各位之和 == 1时，则该数为2的幂
+        if n <= 0:
+            return False
+        
+        
+        b = bin(n)[2:]
+        list_b = list(map(int,b))
+        sum_b = sum(list_b)
+        
+        if sum_b == 1:
+            return True
+        return False
