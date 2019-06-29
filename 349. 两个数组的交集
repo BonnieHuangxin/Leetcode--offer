@@ -1,0 +1,13 @@
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        #应用python的set函数去重
+        nums1 = set(nums1)
+        nums2 = set(nums2)
+        inter = nums1 & nums2 #求集合交集
+        #集合转换为list
+        return list(inter)
