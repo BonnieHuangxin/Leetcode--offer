@@ -1,0 +1,14 @@
+class Solution(object):
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        #注：输出结果中每个元素出现的次数，应与元素在两个数组中出现的次数一致。
+        insert = []
+        for i in nums1:
+            if i in nums2:
+                insert.append(i)
+                nums2.remove(i)
+        return insert
