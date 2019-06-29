@@ -1,0 +1,49 @@
+class Solution(object):
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        x = ''
+        
+        
+        #删去前后空格
+        str = str.strip()
+        
+        if str == '':
+            return 0
+        
+        length = len(str)
+        
+        #判断首位为正负符号，紧接着数字
+        
+
+        
+        if str[0] in {'+','-'}:
+            if len(str) == 1:
+                return 0
+            elif str[1] >= '0' and str[1] <= '9': 
+                x += str[0]
+            else:
+                return 0   
+        #首位为数字
+        elif str[0] >= '0' and str[0] <= '9': 
+            x += str[0]
+        else:
+            return 0
+        
+        #从第二位开始遍历
+        for i in range(1,length):
+            if str[i] >= '0' and str[i] <= '9': 
+                x += str[i]
+            else:
+                break
+        
+        x = int(x)
+        
+        if x <= -2147483648:
+            return -2147483648
+        elif x >= 2147483647:
+            return 2147483647
+        else:
+            return x
