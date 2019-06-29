@@ -1,15 +1,35 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution(object):
-    def climbStairs(self, n):
+    def levelOrderBottom(self, root):
         """
-        :type n: int
-        :rtype: int
+        :type root: TreeNode
+        :rtype: List[List[int]]
         """
-        #动态规划法：第i阶台阶 = 第i-1阶台阶方法数 + 第i-2阶台阶方法数
-        #设dp[i] = dp[i-1] + dp[i-2]  i为台阶数，dp为方案数
-        dp = {}
-        dp[1] = 1
-        dp[2] = 2
-        #从i = 3开始计算
-        for i in range(3,n+1):
-            dp[i] = dp[i-1] + dp[i-2]
-        return dp[n]
+        if root == None:
+            return []
+        cur_root = [root]  #从上至下，存放每一层的树节点
+        alist = []  #存放最后的输出列表
+        
+        #从上至下遍历树节点
+        while cur_root:
+            #存放当前层节点
+            current_list = []
+            #存放下一层的节点
+            next_list = []
+            for node in cur_root:
+                current_list.append(node.val)
+                if node.left != None:
+                    next_list.append(node.left)
+                if node.right != None:
+                    next_list.append(node.right)
+            cur_root = next_list
+            #将每一层节点，压入最后的输出列表alist
+            alist.append(current_list)
+        #反序输出，原来顺序是 [3],[9,20],[15,7]
+        return alist[::-1]
