@@ -1,0 +1,12 @@
+class Solution(object):
+    def mySqrt(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        #牛顿迭代法求平方根的公式  r = (r + x // r) // 2
+        #初始r = x, 直到 r*r <= x停止
+        r = x
+        while r*r > x:
+            r = (r + x // r)//2
+        return r
