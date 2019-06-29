@@ -1,0 +1,24 @@
+class Solution(object):
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        """
+        双指针法
+        left指针从左往右扫，right指针从右往左扫
+        如果numbers[left]+numbers[right]==target说明匹配 输出left+1和right+1 (下标从1开始，所以加一)
+        如果numbers[left]+numbers[right]<target 说明两数之和需要增加 左边指针往右移(数组升序排列)
+        如果numbers[left]+numbers[right]>target 说明两数之和需要减少 右边指针忘左移（数组升序排列）
+        """
+        length = len(numbers)
+        left = 0
+        right = length-1
+        while left < right:
+            if numbers[left] + numbers[right] == target:
+                return [left+1,right+1]
+            if numbers[left] + numbers[right] < target:
+                left = left + 1
+            if numbers[left] + numbers[right] > target:   
+                right = right - 1
