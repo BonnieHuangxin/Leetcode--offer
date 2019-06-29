@@ -1,0 +1,18 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if not strs:
+            return ""
+        result = ''
+        #这里使用python的max()与min()函数求出最大与最小串，再比较最大最小串的重合子串
+        str_max = max(strs)
+        str_min = min(strs)
+        for i in range(len(str_min)):
+            if str_min[i] == str_max[i]:
+                result += str_min[i]
+            else:
+                break
+        return result
