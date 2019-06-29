@@ -1,0 +1,12 @@
+class Solution(object):
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        #列表倒置
+        for i in reversed(nums):
+            if i == val:
+                nums.remove(i)
+        return len(nums)
