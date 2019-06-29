@@ -1,0 +1,26 @@
+from collections import deque
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, children):
+        self.val = val
+        self.children = children
+"""
+#append与extend的区别：append(object) 是将一个对象作为一个整体添加到列表中，extend(iterable) 是将一个可迭代对象中的每个元素逐个地添加到列表中
+#deque([]) deque模块是python标准库collections中的一项 双端队列 入队：deque.append() 出队：deque.popleft() 从列表左边弹出 
+class Solution:
+    def levelOrder(self, root: 'Node') -> List[List[int]]:
+        res = []
+        if not root:
+            return res
+        dq = deque([root]) #deuqe双端队列的用法
+        level = 0
+        while dq:
+            res.append([])
+            for _ in range(len(dq)):
+                cur = dq.popleft()
+                res[level].append(cur.val)
+                dq.extend(cur.children)
+                
+            level += 1
+        return res
