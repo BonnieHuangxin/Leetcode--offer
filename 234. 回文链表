@@ -1,0 +1,20 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def isPalindrome(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        res = []
+        #先将链表转化为列表，再判断是否为回文串
+        while(head):
+            res.append(head.val)
+            head = head.next
+        #注：[]也是回文串
+        new = res[::-1]
+        return new == res
