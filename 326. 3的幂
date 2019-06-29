@@ -1,0 +1,14 @@
+刷累了，还是用循环解题吧
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        #还是用循环解题吧
+        #忘记考虑3**0 = 1的情况
+        if n == 0:
+            return False
+        if n == 1:
+            return True
+        while n >= 3:
+            if n == 3:
+                return True
+            n = n/3
+        return False
