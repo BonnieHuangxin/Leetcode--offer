@@ -1,0 +1,21 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        #递归算法，计算左右子树的深度
+        if root == None:
+            return 0
+        #左右子树的深度
+        lef = self.maxDepth(root.left)
+        rig = self.maxDepth(root.right)
+        #最深的深度+1（根节点）
+        return max(lef,rig)+1
