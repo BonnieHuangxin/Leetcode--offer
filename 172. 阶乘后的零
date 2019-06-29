@@ -1,0 +1,14 @@
+class Solution(object):
+    def trailingZeroes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        #阶乘的结果尾数有几个零，转换为阶乘中的数需要包含 2 和 5 这两个组合的数
+        #每有一对2*5存在，则有一个0
+        #又因为 5 的个数一定比 2 少，问题简化为计算 5 的个数即可
+        res = 0
+        while n >= 5:
+            res += n/5
+            n = n/5
+        return res
