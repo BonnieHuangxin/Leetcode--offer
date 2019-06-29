@@ -4,6 +4,13 @@
 #         self.val = x
 #         self.next = None
 
+解题思路（递归法）
+现在需要把A->B->C->D进行反转，
+1. 可以先假设B->C->D已经反转好，已经成为了D->C->B，那么接下来要做的事情就是将D->C->B看成一个整体，让这个整体的next指向A，所以问题转化了反转B->C->D。那么，
+2. 可以先假设C->D已经反转好，已经成为了D->C,那么接下来要做的事情就是将D->C看成一个整体，让这个整体的next指向B，所以问题转化了反转C->D。那么，
+依次类推......
+
+
 class Solution(object):
     def reverseList(self, head):
         """
