@@ -1,0 +1,19 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        new = []
+        for char in s:
+            #注意“=”号，包括0，9，a,z
+            #注意char为字符，将数字0，9换成字符
+            if "0" <= char <= "9":
+                new.append(char) 
+            elif "a" <= char <= "z":
+                new.append(char) 
+            elif "A" <= char <= "Z":
+                new.append(char.lower())    
+        print(new)
+        reverse = new[::-1]
+        return new == reverse
