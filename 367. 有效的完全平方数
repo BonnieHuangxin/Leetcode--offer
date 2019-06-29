@@ -1,0 +1,20 @@
+class Solution(object):
+    def isPerfectSquare(self, num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+        #二分查找法，若存在num == mid*mid，0<mid<=num
+        if num == 1:
+            return True
+        l, r = 0, num
+        mid = (l+r) //2
+        while l < r:
+            if mid * mid == num:
+                return True
+            if mid * mid < num:
+                l = mid + 1
+            if mid * mid > num:
+                r = mid   #左开右闭
+            mid = (l + r)/2
+        return num == mid*mid
