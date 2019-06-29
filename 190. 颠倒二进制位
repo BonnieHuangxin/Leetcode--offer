@@ -1,0 +1,15 @@
+class Solution:
+    # @param n, an integer
+    # @return an integer
+    def reverseBits(self, n):
+        #二进制移位 
+        #取出 n 的最低位，加入结果 res 中。然后 n 右移，res 左移。循环此过程。
+        res = 0
+        count = 32
+        while count > 0 :
+            res <<= 1
+            res += n&1
+            n >>= 1
+            count -= 1
+            
+        return int(bin(res),base = 2)
