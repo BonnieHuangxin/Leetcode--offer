@@ -1,0 +1,26 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        """
+        很巧妙的，这道题也是DP思想：
+        前i天的最大收益 = max{前i-1天的最大收益，第i天的价格-前i-1天中的最小价格}
+        """
+        if len(prices) <= 1:
+            return 0
+        
+        
+        dp_max = {}
+        dp_min = {}
+        dp_max[0] = 0
+        dp_min[0] = prices[0]
+        for i in range(1,len(prices)):
+            #前i天的最大收益 = max{前i-1天的最大收益，第i天的价格-前i-1天中的最小价格
+            dp_max[i] = max(dp_max[i-1],prices[i]-dp_min[i-1])
+            #前i天的最小价格 = min{前i-1天的最小收价格，第i天的价格
+            dp_min[i] = min(dp_min[i-1],prices[i])
+        
+        #求最大收益
+        max_p = dp_max[0]
+        for i in range(len(prices)):
+            if dp_max[i] > max_p:
+                max_p = dp_max[i]
+        return max_p
