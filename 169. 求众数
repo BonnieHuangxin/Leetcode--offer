@@ -1,0 +1,13 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        #为列表中的每一个数创建字典，每出现一次，字典的value+1
+        #注：d.get(num,0)的使用，d.get(num,0)返回字典d中num元素对应的值,若无，则进行初始化
+        d = {}
+        for num in nums:
+            d[num] = d.get(num,0) + 1
+            if d[num] > len(nums)/2:
+                return num
