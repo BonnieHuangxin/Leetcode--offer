@@ -1,0 +1,18 @@
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        def isoHelper(s1, s2):
+            lookup = {}
+            for i, c in enumerate(s1):
+                if s2[i] in lookup:
+                    if c != lookup[s2[i]]:
+                        return False
+                else:
+                    lookup[s2[i]] = c
+            return True
+        
+        return isoHelper(s, t) and isoHelper(t, s)
