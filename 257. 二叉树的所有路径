@@ -1,0 +1,22 @@
+class Solution:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        #常规方法递归法
+        """
+        #在递归遍历二叉树时，需要考虑当前的节点和它的孩子节点。
+        1.如果当前的节点不是叶子节点，则在当前的路径末尾添加该节点，并递归遍历该节点的每一个孩子节点。
+        2.如果当前的节点是叶子节点，则在当前的路径末尾添加该节点后，就得到了一条从根节点到叶子节点的路径，可以把该路径加入到答案中。
+        
+        """
+        paths = []
+        def construct_paths(root,path):
+            if root:
+                path += str(root.val)
+                if not root.left and not root.right:
+                    paths.append(path)
+                else:
+                    path += '->'
+                    construct_paths(root.left,path)
+                    construct_paths(root.right,path)
+            return paths
+        paths = construct_paths(root,'')
+        return paths
