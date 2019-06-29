@@ -1,0 +1,9 @@
+class Solution(object):
+    def getSum(self, a, b):
+        """
+        :type a: int
+        :type b: int
+        :rtype: int
+        """
+        #偷个懒
+        return sum([a,b])
