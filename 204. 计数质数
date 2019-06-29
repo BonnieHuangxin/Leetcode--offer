@@ -1,0 +1,22 @@
+class Solution(object):
+    def countPrimes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        #质数（又称素数），指在大于1的自然数中，除了1和该数自身外，无法被其他自然数整除的数
+        """
+         具体操作：先将 2~n 的各个数放入表中，然后在2的上面画一个圆圈，然后划去2的其他倍数；
+         第一个既未画圈又没有被划去的数是3，将它画圈，再划去3的其他倍数；
+         现在既未画圈又没有被划去的第一个数 是5，将它画圈，并划去5的其他倍数……依次类推，一直到所有小于或等于 n 的各数都画了圈或划去为止。
+         这时，表中画了圈的以及未划去的那些数正好就是小于 n 的素数。
+        """
+        nums = []
+        if n <= 2:
+            return 0
+        nums = [x for x in range(2,n)]
+        for i in nums:
+            for j in nums:
+                if j > i and j%i == 0:
+                    nums.remove(j)
+        return len(nums)
