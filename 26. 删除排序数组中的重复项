@@ -1,0 +1,13 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        cur = 0
+        #如果当前位置数值与上一个不同，则放在当前位置后面
+        for i in range(1, len(nums)):
+            if nums[cur] != nums[i]:
+                nums[cur+1] = nums[i]
+                cur += 1
+        return cur+1
