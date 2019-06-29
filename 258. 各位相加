@@ -1,0 +1,16 @@
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        #递归法
+        if num <= 9:
+            return num
+        else:
+            count = 0
+            num = str(num)
+            for i in num:
+                count += int(i)
+            num = count
+            return self.addDigits(num)
