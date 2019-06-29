@@ -1,0 +1,15 @@
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        #动态规划法：第i阶台阶 = 第i-1阶台阶方法数 + 第i-2阶台阶方法数
+        #设dp[i] = dp[i-1] + dp[i-2]  i为台阶数，dp为方案数
+        dp = {}
+        dp[1] = 1
+        dp[2] = 2
+        #从i = 3开始计算
+        for i in range(3,n+1):
+            dp[i] = dp[i-1] + dp[i-2]
+        return dp[n]
