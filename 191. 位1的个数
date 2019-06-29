@@ -1,0 +1,15 @@
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        #十进制转二进制的方式。每次对 2 取余判断是否是 1，是的话就 count = count + 1
+        count = 0
+        n = bin(n)
+        print(n)
+        #注意：c为字符,判断c是否为'1'
+        for c in n:
+            if c == '1':
+                count += 1
+        return count
