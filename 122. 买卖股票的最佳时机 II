@@ -1,0 +1,15 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        #本题可以在同一天买入和卖出，因此只要当天票价比昨天的高就可以卖出
+        length = len(prices)
+        if length == 0:
+            return 0
+        count = 0
+        for i in range(1,length):
+            if prices[i] > prices[i-1]:
+                count += prices[i] - prices[i-1]
+        return count
