@@ -1,0 +1,18 @@
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        #str.replace(old, new[, max]) max：用来替换的次数
+        #当我们将max参数传入后，则将旧字符串替换为新字符串不超过max次，多余的则不进行替换
+        if len(s) != len(t):
+            return False
+        for i in s:
+            if i in t:
+                t = t.replace(i,'',1)  #这里注意：将替换后的值赋值给t
+        if t == '':
+            return True
+        else:
+            return False
