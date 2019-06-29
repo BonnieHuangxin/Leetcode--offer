@@ -1,0 +1,21 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        str_x = str(x)
+        str_new = ''
+        if str_x[0] == '-':
+            str_new += '-'
+            str_x = str_x.lstrip('-')
+            str_rev = str_x[: :-1]
+            str_new += str_rev
+        else:
+            str_new = str_x[ : :-1]
+            
+        if str_new[0] == '-':
+            x_new = -int(str_new[1:])
+        else:
+            x_new = int(str_new)
+            
+        if (-2**31 <  x_new < 2**31):
+            return x_new
+        else:
+            return 0
