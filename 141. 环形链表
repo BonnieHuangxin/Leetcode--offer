@@ -1,0 +1,28 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        #使用快慢指针，若指针相遇则判断有环
+        #快指针速度是慢指针的两倍。终止条件是快指针指向None或者快慢指针相等。想象成两匹🐎在环形跑道上追逐，只要速度不一样，迟早相遇
+        #p:慢指针 q:快指针
+        if head == None:
+            return False
+        p = head
+        q = head
+        while q:
+            if q.next == None:
+                return False
+            p = p.next
+            q = q.next.next
+            
+            if p == q:
+                return True
+        return False
