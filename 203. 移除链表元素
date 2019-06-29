@@ -1,0 +1,33 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def removeElements(self, head, val):
+        """
+        :type head: ListNode
+        :type val: int
+        :rtype: ListNode
+        """
+        """
+        这题就是两个考点：
+        1.各种边界条件
+        head自身为null
+        head自身需要被删除
+        2.遍历链表，删除所有的需要被删除的节点
+        """
+        #1.删除head自身为val的情况
+        while head and head.val == val:
+            head = head.next
+        if not head:
+            return head
+        #2.遍历列表，删除节点
+        cur = head
+        while cur.next:
+            if cur.next.val == val:
+                cur.next = cur.next.next
+            else:
+                cur = cur.next
+        return head
