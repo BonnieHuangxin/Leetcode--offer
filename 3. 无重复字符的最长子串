@@ -1,0 +1,27 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        temp = '' #空串
+        length = 0
+        max_len = 0
+        
+        for i in s:
+            if i not in temp:
+                temp += i
+                length += 1
+            else:
+                index = temp.index(i)
+                temp = temp[index+1:] #保留重复i之后的字符
+                temp = temp + i # 新匹配串（加上i）
+                
+                #更新不重复字符最大长度
+                if length > max_len:
+                    max_len = length
+                length = len(temp) #新len  
+        #比较最后一次遍历中，length与num_len
+        if length > max_len:
+            max_len = length
+        return max_len
