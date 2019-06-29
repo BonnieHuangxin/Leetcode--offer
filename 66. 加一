@@ -1,0 +1,20 @@
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        #注意：为9的情况，在首位插入1
+        #倒序遍历
+        for i in range(len(digits)-1,-1,-1):
+            if digits[i] == 9:
+                digits[i] = 0
+                #数组中只有一个数字为9的情况，先置0，再在首位插入1
+                if i == 0:
+                    digits.insert(0,1)
+            else:
+                #当不进位，直接加1
+                #当进位时，再第二次循环到前一个数字+1
+                digits[i] += 1
+                break
+        return digits
