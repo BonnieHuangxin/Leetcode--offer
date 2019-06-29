@@ -1,0 +1,11 @@
+class Solution(object):
+    def canWinNim(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+    #脑筋急转弯，如果堆中有 4 块石头，那么你永远不会赢得比赛
+    #只要轮到你的时候剩余石头数量不是 4 的倍数你都是完胜，因为你有办法使得每次轮到对方的时候剩余石头数量都为 4 的倍数；如果石头数量是4的倍数，你就会输。
+        if n%4 == 0:
+            return False
+        return True
