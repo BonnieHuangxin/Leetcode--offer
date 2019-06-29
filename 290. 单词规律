@@ -1,0 +1,25 @@
+class Solution(object):
+    def wordPattern(self, pattern, str):
+        """
+        :type pattern: str
+        :type str: str
+        :rtype: bool
+        """
+        #与之前的一道题目解法相近，但要注意到：保证唯一性及双向映射，需要两个字典
+        dic_1 = {}
+        dic_2 = {}
+        str_split = str.split(" ")
+        #先判断长度是否相等
+        if len(pattern) != len(str_split):
+            return False
+        for i in range(len(pattern)):
+            if pattern[i] not in dic_1 and str_split[i] not in dic_2:
+                dic_1[pattern[i]] = str_split[i]
+                dic_2[str_split[i]] = pattern[i]
+            elif pattern[i] in dic_1:
+                if dic_1[pattern[i]] != str_split[i]:
+                    return False
+            elif str_split[i] in dic_2:
+                if dic_2[str_split[i]] != pattern[i]:
+                    return False
+        return True
