@@ -1,0 +1,38 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+
+#当前节点的直径就是左右子节点的深度之和，最大直径就是所有节点左右节点的深度之和
+class Solution(object):
+    def __init__(self):
+        self.ans = 0
+        
+        
+        
+    def diameterOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0
+        self.depth(root)
+        return self.ans
+        
+        
+        
+    def depth(self, root):
+        if not root:
+            return 0
+        left = self.depth(root.left)
+        right = self.depth(root.right)
+        
+        if left + right > self.ans:
+            self.ans = left + right
+    
+            
+        return 1+max(left,right)
