@@ -1,0 +1,16 @@
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        #用空串替换magazine中相同的字符，再判断串的长度
+        for s in ransomNote:
+            new_magazine = magazine.replace(s,"",1)
+            #如果不能替换，返回false
+            if len(new_magazine) == len(magazine):
+                return False
+            magazine = new_magazine  #替换后的为新的magazine字符串
+            
+        return True
