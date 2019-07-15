@@ -1,0 +1,32 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        """
+        解题思路：
+
+        1. 找出字符串中每个字符出现的次数
+        2. 若字符出现次数为奇数次，出现的次数减去1则为可用于构造回文串的字符数。若出现的次数为偶数次，出现次数则为可用于构造回文串的字符数
+        3. 若存在奇数次字符，则最终结果再＋1，因为奇数字符可放一个在最中间。
+ 
+        """
+        #统计每个字符出现的次数
+        res = 0
+        dic = {}
+        for i in s:
+            dic[i] = dic.get(i,0) + 1
+
+        
+        exist_odd = False  #判断是否存在奇数
+        for k in dic:
+            if dic[k]%2 == 0:
+                res += dic[k]
+            else:
+                res += (dic[k]-1)
+                exist_odd = True
+                
+        if exist_odd == True:
+            res += 1
+        return res
