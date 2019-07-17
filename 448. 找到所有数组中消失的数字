@@ -1,0 +1,17 @@
+class Solution(object):
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        # 因为每个元素的值 v 都小于等于 数组元素长度n
+        # 所以可以用读取到的元素值 v，去寻找对应的下标 j = v-1
+        # 如果 nums[j] 被 访问过，则标为负数
+        for num in nums:
+            i = abs(num) - 1   #注意：这里一定要加abs，因为在遍历过程中，nums也在改变，出现了负数
+            nums[i] = -abs(nums[i])
+        print(nums)
+        # 剩下的为正的元素的下标，则未访问过，
+        # 代表下标 i 对应的值 i+1 为未出现过的元素
+        res = [k + 1 for k, v in enumerate(nums) if v > 0]
+        return res
