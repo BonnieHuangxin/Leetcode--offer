@@ -1,0 +1,10 @@
+class Solution(object):
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        #找到一个二进制位数与num相同但每一位都为1的数，然后用这个数 减去 num  / 用这个数和num异或
+        length = len(bin(num)) - 2
+        a = (1<<length) -1  ##将1左移length位，并减1得到二进制数位全是1的长度位length的数
+        return num^a
