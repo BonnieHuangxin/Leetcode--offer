@@ -1,0 +1,29 @@
+class Solution(object):
+    def findContentChildren(self, g, s):
+        """
+        :type g: List[int]
+        :type s: List[int]
+        :rtype: int
+        """
+        #排序函数list.sort(cmp=None, key=None, reverse=False) 默认升序， reverse=False时为升序
+        #一个小朋友最多只能拥有一块饼干。
+        g.sort()
+        s.sort()
+        
+        len_g = len(g)
+        len_s = len(s)
+        
+        res = 0
+        i = 1
+        j = 1
+        while i <= len_g and j <= len(s):
+            #如果满足胃口
+            if g[i-1] <= s[j-1]:
+                res += 1
+                i += 1
+                j += 1
+            #如果不满足胃口
+            else:
+                j += 1
+        
+        return res
