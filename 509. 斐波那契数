@@ -1,0 +1,16 @@
+class Solution(object):
+    def fib(self, N):
+        """
+        :type N: int
+        :rtype: int
+        """
+        #动态规划
+        dic = {}
+        dic[0] = 0
+        dic[1] = 1
+        if N <= 1:
+            return dic[N]
+        for i in range(2,N+1):
+            dic[i] = dic[i-2] + dic[i-1]
+            
+        return dic[N]
