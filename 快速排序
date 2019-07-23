@@ -1,0 +1,12 @@
+def quick_sort(nums):
+    if len(nums) <= 1:
+        return nums
+    key = nums.pop()
+    left = []
+    right = []
+    for x in nums:
+        if x < key:
+            left.append(x)
+        else:
+            right.append(x)
+    return quick_sort(left) + [key] + quick_sort(right)
