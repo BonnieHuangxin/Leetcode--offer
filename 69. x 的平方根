@@ -10,3 +10,26 @@ class Solution(object):
         while r*r > x:
             r = (r + x // r)//2
         return r
+
+class Solution(object):
+    def mySqrt(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        #二分法 一个数的平方根不超过本身
+        if x <= 1:
+            return x
+        
+        l = 0
+        r = x
+        while (l<r):
+            mid = (l+r)//2 + 1 #加上1是为了防止进入死循环
+            if mid*mid == x:
+                return mid
+            if mid*mid > x:
+                r = mid-1
+            if mid*mid < x:
+                l = mid
+            
+        return l
