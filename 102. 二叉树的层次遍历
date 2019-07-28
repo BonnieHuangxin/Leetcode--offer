@@ -1,0 +1,29 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return
+        res = []
+        cur_level = [root] #存放当前层的node
+        while cur_level:
+            temp = [] #存放当前层的val
+            next_level = [] #存放下一层的node
+            for i in cur_level:
+                temp.append(i.val)
+                if i.left:
+                    next_level.append(i.left)
+                if i.right:
+                    next_level.append(i.right)
+            res.append(temp)
+            cur_level = next_level
+        return res
