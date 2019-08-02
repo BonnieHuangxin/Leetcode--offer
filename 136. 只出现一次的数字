@@ -7,8 +7,9 @@ class Solution(object):
         '''
         异或： 1. 相同为0
               2. 0与任何数异或都等于那个数 0^a = a
+              3. a^b^a = a^a^b = b 满足交换律
         '''
         a = 0
-        for num in nums:
-            a = a ^ num
+        for i in nums:
+            a = a^i
         return a
