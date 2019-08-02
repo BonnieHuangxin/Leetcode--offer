@@ -1,0 +1,14 @@
+#一句话,让大的数沉底
+#两两比较,让大的数放在数组末端
+def bubbleSort(nums):
+    n = len(nums)
+    f = n
+    for _ in range(n-1):
+        for i in range(f-1):
+            if nums[i] > nums[i+1]:
+                nums[i],nums[i+1] = nums[i+1],nums[i]
+        f -= 1
+    return nums
+    
+nums = [1,4,2,6,4,9,2,5]
+print(insertions_sort(nums))
