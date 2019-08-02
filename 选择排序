@@ -1,0 +1,11 @@
+#遍历数组,每次都把最小的放到相应位置
+def select_sort(nums):
+    n = len(nums)
+    for i in range(n-1):
+        for j in range(i,n-1):
+            if nums[i] > nums[j]:
+                nums[i],nums[j] = nums[j],nums[i]
+    return nums
+
+nums = [1,4,2,6,4,9,2,5]
+print(select_sort(nums))
