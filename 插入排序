@@ -1,0 +1,13 @@
+#从索引1元素a开始,依次和前面比较(从后往前),当该元素a小于已经排序好元素b,那么b向后移一位.最后肯定留一个"坑",把a塞进去.
+def insertions_sort(nums):
+    for i in range(1,len(nums)):
+        temp = nums[i]
+        j = i-1
+        while j >= 0 and  nums[j] > temp:
+            nums[j+1] = nums[j]
+            j -= 1
+        nums[j+1] = temp
+    return nums
+
+nums = [1,4,2,6,4,9,2,5]
+print(insertions_sort(nums))
