@@ -1,0 +1,29 @@
+#分冶法
+
+#将两个数组从大到小合并
+def merge(left, right):
+    i = 0
+    j = 0
+    res = []
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            res.append(left[i])
+            i += 1
+        else:
+            res.append(right[j])
+            j += 1
+    res += left[i:]
+    res += right[j:]
+    return res
+
+def merge_sort(nums):
+    n = len(nums)
+    if n <= 1:
+        return nums
+    mid = n//2
+    left = merge_sort(nums[:mid])
+    right = merge_sort(nums[mid:])
+    return merge(left, right)   
+    
+nums = [1,4,2,6,4,9,2,5]
+print(merge_sort(nums))
