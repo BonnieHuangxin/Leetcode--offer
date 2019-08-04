@@ -16,3 +16,23 @@ class Solution(object):
             return True
         
         return isoHelper(s, t) and isoHelper(t, s)
+
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        #保证互相映射
+        def helper(s1,s2):
+            dic = {}
+            for i in range(len(s1)):
+                if s1[i] in dic:
+                    if dic[s1[i]] != s2[i]:
+                        return False
+                else:
+                    dic[s1[i]] = s2[i]
+            return True
+        return helper(s,t) and helper(t,s)
+
