@@ -1,0 +1,52 @@
+问题描述：有N(N>>10000)个整数,求出其中的前K个最大的数。（称作Top k或者Top 10）
+
+问题分析：
+
+1.对前k个元素建立最小堆
+2.若堆顶元素<nums[k+1]，则替换堆顶元素，重新调整堆
+3.计算结束，则堆中的元素为前k大的元素。
+
+
+#建立最小堆
+def heap_adjust(A,i,size):
+    left = 2*i + 1
+    right = 2*i + 2
+    min_index = i
+    if left < size and A[left] < A[min_index]:
+        min_index = left
+    if right < size and A[right] < A[min_index]:
+        min_index = right
+    if min_index != i:
+        temp = A[i]
+        A[i] = A[min_index]
+        A[min_index] = temp
+        heap_adjust(A,min_index,size)
+    return A
+        
+def build_heap(A,size):
+    for i in range(size//2,-1,-1):
+        heap_adjust(A,i,size)
+    return A
+
+def heap_sort(A):
+    size = len(A)
+    A = bulid_heap(A,0,size)
+    for i in range(len(A)-1,0,-1):
+        temp = A[0]
+        A[0] = A[i]
+        A[i] = A[0]
+        A = heap_adjust(A,0,i)
+    return A
+
+
+#这里假设k = 3 取top 3的数字
+nums = [9,8,7,6,5,4,3,2,1]
+b = build_heap(nums[:3],3)
+#从k+1开始，依次比较，然后替换
+for i in range(3,len(nums)):
+    if nums[i] > b[0]:
+        temp = nums[i]
+        nums[i] = b[0]
+        b[0] = temp
+        b = heap_adjust(b,0,3)
+print(b[0])
