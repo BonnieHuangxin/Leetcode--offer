@@ -1,0 +1,22 @@
+# -*- coding:utf-8 -*-
+#/* 思路
+#* 矩阵是有序的，从左下角来看，向上数字递减，向右数字递增，
+#* 因此从左下角开始查找，当要查找数字比左下角数字大时。右移
+#* 要查找数字比左下角数字小时，上移
+#*/
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        # write code here
+        h = len(array) #行数
+        l = len(array[0]) #列数
+        i = h - 1
+        j = 0
+        while i >=0 and j <= l-1:
+            if array[i][j] == target:
+                return True
+            elif array[i][j] > target:
+                i -= 1
+            elif array[i][j] < target:
+                j += 1
+        return False
