@@ -1,3 +1,4 @@
+1、两次循环
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -14,3 +15,21 @@ class Solution(object):
                     result.append(j)
                     break
         return result
+
+2、字典
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        dic = {}
+        for ind, val in enumerate(nums):
+            dic[val] = ind
+        for i, val in enumerate(nums):
+            j = dic.get(target - val)
+            if j is not None and i!=j:
+                return [i,j]
+                break;
+        
