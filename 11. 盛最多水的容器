@@ -1,0 +1,22 @@
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        """
+        面积 = (j-i) * min(height[i],height[j])
+        如果值大的指针向内移动，距离一定减小，高度为值小的，因此面积一定减小。
+        而我们要求最大的面积，因此值大的指针不动，而值小的指针向内移动遍历即可。
+        """
+        i = 0
+        j = len(height)-1
+        max_area = 0
+        while (i < j):
+            area = (j-i) * min(height[i],height[j])
+            max_area = max(area, max_area)
+            if height[i] <= height[j]:
+                i += 1
+            else:
+                j -= 1
+        return max_area
